@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-image: url("https://c4.wallpaperflare.com/wallpaper/131/578/547/pixel-art-town-city-waneella-hd-wallpaper-preview.jpg");
+        background-size: 5000;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .clock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 36px;
+        text-shadow: 2px 2px #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div id="date"></div>
+      <div id="time"></div>
+    </div>
+    <script>
+      function updateClock() {
+        const date = new Date();
+
+        const days = [
+          "Chủ Nhật",
+          "Thứ Hai",
+          "Thứ Ba",
+          "Thứ Tư",
+          "Thứ Năm",
+          "Thứ Sáu",
+          "Thứ Bảy"
+        ];
+
+        const months = [
+          "Tháng 1",
+          "Tháng 2",
+          "Tháng 3",
+          "Tháng 4",
+          "Tháng 5",
+          "Tháng 6",
+          "Tháng 7",
+          "Tháng 8",
+          "Tháng 9",
+          "Tháng 10",
+          "Tháng 11",
+          "Tháng 12"
+        ];
+
+        const dateDiv = document.querySelector("#date");
+        dateDiv.textContent =
+          days[date.getDay()] +
+          ", " +
+          date.getDate() +
+          " " +
+          months[date.getMonth()] +
+          " " +
+          date.getFullYear();
+
+        const timeDiv = document.querySelector("#time");
+        timeDiv.textContent =
+          leadingZero(date.getHours()) +
+          ":" +
+          leadingZero(date.getMinutes()) +
+          ":" +
+          leadingZero(date.getSeconds());
+      }
+
+      function leadingZero(num) {
+        return num < 10 ? "0" + num : num;
+      }
+
+      setInterval(updateClock, 1000);
+      updateClock();
+    </script>
+  </body>
+</html>
